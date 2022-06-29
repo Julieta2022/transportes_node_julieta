@@ -1,0 +1,321 @@
+/*vamos a hacer todo lo que tenga que ver con el sitio*/
+/* font-family: 'Open Sans', sans-serif; */
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;/*base*/
+    line-height: 20px;
+    /*siempre por defecto el margin es 16px */
+}
+
+header{
+    background-color: #2e64a1; /* #, rgb, rgba*/
+    padding: 16px 0; /*se puede usar padding 1rem 0*//*primer parametro arriba abajo 2do parametro derecha izq*/
+
+}
+
+header h1{
+    color: white;
+    font-size: 40px;
+    font-weight: 100;
+    font-style: italic;
+    display: inline-block; /*para que esté al mismo nivel del logo*/
+    position:relative;
+    bottom: 35px;
+    margin-left: 10px;
+}
+
+nav{
+    background-color: #6da9ed;
+    margin-bottom: 20px; /*para separar la imagen del avion de la botonera*/
+}
+
+nav ul{
+    list-style: none; /*para sacarle los puntitos que se agregan por ser una lista esto lo vemos en el navegador al inspeccionar el código*/
+    margin: 0; /*para sacarle el margen que viene por defecto al ser una lista-esto lo vemos en el navegador al inspeccionar el código*/
+    padding: 0; /*para sacarle el padding que viene por defecto al ser una lista-esto lo vemos en el navegador al inspeccionar el código*/
+    display: flex; 
+    /* justify-content: space-around; o spacce between, no lo usamos porque usamos "flex-grow" en "li"*/
+    /* justify-content: stretch; no lo usamos porque usamos "flex-grow" en "li" */
+    /* width: 100%; no lo usamos porque usamos "flex-grow" en "li"*/
+}
+
+nav ul li{
+    /* display: block; no lo usamos porque usamos "flex-grow" */
+    flex-grow: 1; /*La propiedad flex-grow de CSS especifica el factor de crecimiento de un elemento flexible (que tiene asignado display:flex),en su dirección principal.*//*propiedad que se tiene que aplicar al hijo*/
+    
+}
+
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 3px 6px;
+    display: block; /*para que refleje el padding que indicamos. Crece el bloque - caja*/
+    text-align: center;
+}
+
+nav ul li a:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+} /*para que cambie de color al posicionar el cursor en la botonera*/
+
+footer{
+    background-color: #ccc;
+    clear: both;
+    color: #333;
+    text-align: center;
+    padding: 5px 0;/*3rem 0*//*para que el contenido marque el crecimiento del contenedor*/
+    margin-top: 20px; /*para separar el footer del contenido*/
+}
+
+nav ul li a.activo{
+    background-color: #4c76a5;
+
+} /*Para que quede activo el "HOME". En este caso la clase debe pegarse a la etiqueta "a", para que tome los cambios, porque el html tiene muchas "a" y no entiende a cual se debe aplicar, por ello va sin espacio*/
+
+
+/* .activo{
+    background-color: #4c76a5;  de esta forma también funciona pero se recomienda usar la anterior nav ul li a.activo*/
+
+.holder{
+    max-width: 960px;/*maxímo ancho pensado para una pantalla de 1024*/
+    margin: 0 auto;
+
+}
+
+h2{
+    color: #2e64a1;
+    font-weight: 400;
+}
+
+/*inicio home*/
+
+.bienvenidos{
+    width: 75%;
+    padding-right: 10px; /*para que el contenido no se pegue a la caja de testimonios*/
+    box-sizing: border-box;/*cuando tenemos bordes y padding agregar siempre esta propiedad*/
+}
+
+.testimonios{
+    width: 25%;
+}
+
+.columnas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bienvenidos p{
+    font-size: 20px;
+}
+
+.testimonio{
+    background-color: #ccc;
+    padding: 16px;
+}
+
+.testimonio .cita{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 22px;
+    display: block; /*para que funcione como un bloque/caja*/
+}/*se arma la ruta ".testimonio .cita" por si en otro lado usamos "cita", pero si no lo usaramos, se puede poner directamente ".cita"*/
+
+.testimonio .autor{
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    margin: 12px 0;
+}
+
+/*fin home*/
+
+/*inicio nosotos*/
+
+.historia p{
+    font-size: 0.7rem;/*o 12px*//*medida en base al body*/
+}
+
+.personas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.persona{
+    border: 1px solid #ccc;
+    border-radius: 5px;  
+    width: 18%; 
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+     
+}
+
+.persona img{
+    border-radius: 50%;
+    max-width: 60%;/*para que ocupe el 60% de cada cajita*/
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.persona h5,
+.persona h6{
+        margin: 0;
+        font-weight: normal;
+        color: #2e64a1;
+}/*para darle la misma clase a dos etiquetas*/
+
+.persona h5{
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.persona h6{
+    font-size: 11px;
+    font-style: italic;
+}
+
+.persona p{
+    font-size: 10px;
+    color: #666;
+
+}
+
+/*fin nosotros*/
+
+/*inicio servicios*/
+
+.servicio{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 16px 0;
+    display: flex;
+    gap: 30px; /*calle/espacio entre elementos*/
+    align-items: center;/*para que no se desconfigure la imagen al agregar mas texto y disminuir el navegador*/
+}
+
+.servicio .info h4{
+    color: #2e64a1;
+    font-weight: 500;
+    font-style: italic;
+    border-bottom: 1px solid #2e64a1;
+    padding-bottom: 10px;
+}
+
+.servicio .info p{
+    font-size: 13px;
+    /* line-height: 19px; */
+}
+.servicio img{
+    border-radius: 13px;
+    display: block; /*para que no se desconfigure la imagen al agregar mas texto y disminuir el navegador*/
+    max-width: 225px; /*para que no se desconfigure la imagen al agregar mas texto y disminuir el navegador*/
+}
+
+.servicio:nth-child(even){
+    flex-direction:row-reverse ;
+
+}
+/*fin servicios*/
+
+/*inicio galería*/
+
+.galeria{
+    display: flex;
+    flex-wrap: wrap;/*para que genere el desbordamiento y pase imagenes para abajo */
+    justify-content: flex-start;/*para que no se separen tanto las dos imagenes de abajo*/
+}
+
+.galeria img{
+    border: 1px solid #999;
+    padding: 5px;
+    width: 18%;
+    margin-bottom: 20px;
+    margin-right: 2%;
+    box-sizing: border-box;
+
+}
+.galeria img:nth-child(5n+1)/*cada 5 hijos, al 1ero le aplica la propiedad*/{
+    border: 1px solid red;
+}
+
+.galeria img:nth-child(3){
+    background-color: aqua;
+    border: none;/*o border-color aqua*/
+}
+
+/*fin galería*/
+
+/*inicio contacto*/
+.contacto{
+    display: flex;
+    gap: 24px;
+    
+}
+
+.contacto div{
+    width: 100%;
+    /* background-color:yellow ;
+ */
+}
+
+/* div.datos{
+    background-color: orange;
+} se pone div.datos porque el div en si tiene un color amarillo con la orden anterior, por eso si se pone solo .datos no me va a tomar el cambio de propiedad. Se puede usar div.datos o .contacto .datos */
+
+.datos p{
+    font-size: 14px;
+}
+
+.datos ul li{
+    font-size: 13px;
+}
+
+.formulario p{
+    display: flex;
+}/*esta propiedad es para que el nombre del input este al lado del cuadradito para rellenar. Si la sacamos, quedan los nombres arriba*/
+
+.formulario p label{
+    min-width: 80px;
+    display: flex;
+    align-items: center;/*para que los nombres esten en el centro. Necesita de la propiedad de display primero*/
+}
+
+.formulario p input,
+.formulario p textarea{
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    border: 1px solid #999;
+    font-size: 14px;
+    padding: 6px 10px;
+    /* box-sizing: border-box; en caso que NO le pongamos la propiedad de .formulario p como display flex*/
+}
+
+.formulario p textarea{
+    height: 150px;
+    resize: none;/*para sacarle la propiedad que viene por defecto en el mensaje de poder agrandar el cuadradito    */
+}
+
+.formulario p:nth-child(4){
+    align-items: flex-start;
+} /*se agrega esta propiedad para que el nombre "mensaje", no quede en el centro y quede arriba del textarea..pero hay que tener en uenta que si se agrega otro item en el formulario, el "mensaje" no sería el 4to hijo...por lo que en ese caso es conveniente agregar una clase en el html particular para mensaje */
+
+.formulario input[type="submit"]{
+    background-color: #6da9ed;
+    box-shadow: 0 0 10px rgba(0, 0 , 0, 4);
+    color: white;
+    font-size: 16px;
+    padding: 6px 12px;
+    width: auto; /*es el tamaño predeterminado del botón enviar*/
+    position: relative; /*para mover el boton de enviar*/
+    left: 80px;
+    cursor: pointer;/*para agregarle la manito*/
+}
+
+.formulario input[type="submit"]:hover{
+    background-color: #2e64a1;
+} /*para que cambie de color el botorncito de enviar cuando nos posicionamos con el cursor :hover*/
+
+
+/*fin contacto*/
