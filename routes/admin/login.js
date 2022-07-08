@@ -16,9 +16,14 @@ router.post('/', async function(req,res,next){
         var password = req.body.password;
 
         var data = await usuariosModel.getUserAndPassword(usuario,password);
+        //var data = select * from usuarios where usuario = 'flavia' and password = md5(1234)
+        //el select * trae las columnas id, usuario, password 
 
         //!= significa diferente 
         if(data !=undefined){
+            req.session.id_usuario = data.id; //1
+            req.session.nombre = data.usuario; //Flavia. respetar el nombre de las columnas que pusimos en la tabla de la base de datos que creamos
+
             res.redirect('/admin/novedades')
         }else{
             res.render('admin/login',{
