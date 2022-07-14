@@ -21,6 +21,7 @@ router.get('/agregar',(req,res,next) => {
     })
 })
 
+/*agregar la novedad*/
 router.post('/agregar', async (req,res,next) => {
 
     // console.log(req.body) //es para controlar si pasa de la página A a la B
@@ -48,6 +49,14 @@ router.post('/agregar', async (req,res,next) => {
 
 })
 
+/*eliminar la novedad*/
+router.get('/eliminar/:id', async (req,res,next) => {
+    //console.log(req.params.id);
+    var id = req.params.id;
+    await novedadesModel.deleteNovedadByID(id);
+    res.redirect('/admin/novedades')
 
+
+}) 
 
 module.exports = router;
