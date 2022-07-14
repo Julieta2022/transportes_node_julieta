@@ -19,6 +19,32 @@ router.get('/agregar',(req,res,next) => {
         layout: 'admin/layout'
 
     })
+})
+
+router.post('/agregar', async (req,res,next) => {
+
+    // console.log(req.body) //es para controlar si pasa de la página A a la B
+
+    try{
+        if (req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != "" ){
+            await novedadesModel.insertNovedades(req.body);
+            res.redirect('/admin/novedades')
+        } else {
+            res.render('admin/agregar', {
+                layout:'admin/layout',
+                error: true,
+                message: 'Todos los campos son requeridos'
+            })
+        }
+    }catch(error){
+        console.log(error)
+        res.render('admin/agregar',{
+            layout:'admin/layout',
+            error:true,
+            message: 'No se carga la novedad' //para cuando cae el servidor y pensamos que la novedad si se cargó, pero en realidad no...esto ayuda a avisar que la novedad no se llegó a cargar
+        
+        })
+    }
 
 })
 
