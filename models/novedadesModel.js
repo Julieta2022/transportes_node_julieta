@@ -25,4 +25,26 @@ async function deleteNovedadByID(id){
     return rows;
 }
 
-module.exports = { getNovedades, insertNovedades, deleteNovedadByID }
+/*traer la novedad dentro del form*/
+async function getNovedadesByID(id){
+    var query = 'select * from novedades where id= ?'
+    var rows = await pool.query //modo de pasar los datos pool.query, definido en bd.js
+    (query, [id]);
+    return rows[0]; //el [0] es para asegurar queva a traer un solo id
+}
+
+/*query del update*/
+async function modificarNovedadByID(obj,id){
+    try{
+      var query = 'update novedades set ? where id=?'
+      var rows = await pool.query(query,[obj,id]);
+      return rows;  
+    }catch(error){
+        console.log(error)
+        throw error;
+    }
+
+
+}
+
+module.exports = { getNovedades, insertNovedades, deleteNovedadByID, getNovedadesByID, modificarNovedadByID }

@@ -55,8 +55,42 @@ router.get('/eliminar/:id', async (req,res,next) => {
     var id = req.params.id;
     await novedadesModel.deleteNovedadByID(id);
     res.redirect('/admin/novedades')
-
-
 }) 
+
+/*vista modificar (form) + los datos de campospara modificar*/
+
+router.get ('/modificar/:id', async(req,res,next) =>{
+    var id = req.params.id;
+    var novedad = await novedadesModel.getNovedadesByID(id);
+    // console.log(novedad)
+    res.render('admin/modificar',{
+        layout:'admin/layout',
+        novedad
+    })
+})
+
+/*actualización de los datos al modificar*/
+router.post('/modificar', async(req,res,next)=>{
+    try{
+        var obj = {
+            titulo:req.body.titulo,
+            subtitulo:req.body.subtitulo,
+            cuerpo:req.body.cuerpo
+        }
+        
+        await novedadesModel.modificarNovedadByID(obj, req.body.id);
+        res.redirect('/admin/novedades');
+    }catch(error){
+        console.log(error)
+        res.render('admin/modificar',{
+        layout:'admin/layout',
+        error:true,
+        message:'No se modifico la novedad'
+        })
+
+    }
+
+})
+
 
 module.exports = router;
