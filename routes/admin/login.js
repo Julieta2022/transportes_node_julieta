@@ -8,6 +8,13 @@ router.get('/', function(req,res,next){
     });//view/admin/login.js
 }); //cierro el GET
 
+router.get('/logout', function(req,res,next){
+    req.session.destroy();//destruye el inicio de sesión (Id, nombre). "req": es pedir el dato de la sesión
+    res.render('admin/login',{
+        layout:'admin/layout'
+    })
+})
+
 router.post('/', async function(req,res,next){
 
     try{
