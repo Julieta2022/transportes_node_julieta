@@ -4,11 +4,22 @@ var novedadesModel = require('../../models/novedadesModel');
 
 /*diseño y listado de novedades*/
 router.get('/', async function(req,res,next){
-    var novedades = await novedadesModel.getNovedades();
+   // var novedades = await novedadesModel.getNovedades(); queda comentado por la clase n° 42 donde agregamos la funcionalidad de buscador..se aplica lo q sigue
+
+   var novedades
+   if(req.query.q === undefined){
+    novedades = await novedadesModel.getNovedades();
+    }else{
+        novedades = await novedadesModel.buscarNovedades(req.query.q);
+
+    } //los tres = significa que tiene que ser igual en tipo y valor. La q (solita) viene del name que le pusimos al input en novedades.hbs del buscador
+
     res.render('admin/novedades',{
         layout:'admin/layout',//admin/layout.hbs
         persona: req.session.nombre,
-        novedades //le paso una propiedad q en este caso esta almacenando el nombre (Flavia)
+        novedades, //le paso una propiedad q en este caso esta almacenando el nombre (Flavia)
+        q: req.query.q,
+        is_search: req.query.q !== undefined //en caso que no haya resultado en la busqueda, tendría que pasar un mensaje de que no se encontró la busqueda
     });//view/admin/novedades.hbs
 }); //cierro el GET
 
