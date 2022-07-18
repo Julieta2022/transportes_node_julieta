@@ -1,12 +1,30 @@
  <h2>Novedades</h2>
+ <div style="float:right; position:relative; bottom: 40px; ">
+    <form action="/novedades" method="get">
+        <input type="search" name="q"{{#if q}} value="{{q}}" {{/if}}>
+        <button type="submit">Buscar</button>
+    </form>
+ </div>
  {{#each novedades}}
-        <div>
+        <div style="margin-top:45px">
             <h3>{{titulo}}</h3>
             <h4>{{subtitulo}}</h4>
             <p>{{cuerpo}}</p>
             <hr/> <!--es una etiqueta de html que hace una línea de separación entre contenido sin necesidad de hacer una clase por css-->
         </div>
 {{/each}}
+
+{{#if is_search}}
+    {{#unless novedades.length}}
+        <p>No se encontraron resulados para <b>"{{q}}</b></p>
+    {{/unless}}
+
+
+{{/if}}
+
+
+
+
 
         {{!-- <div>
             <h3>Título</h3>
